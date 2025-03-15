@@ -142,6 +142,7 @@ class Exp(BaseExp):
         return COCODataset(
             data_dir=self.data_dir,
             json_file=self.train_ann,
+            name="train",
             img_size=self.input_size,
             preproc=TrainTransform(
                 max_labels=50,
@@ -304,7 +305,7 @@ class Exp(BaseExp):
         return COCODataset(
             data_dir=self.data_dir,
             json_file=self.val_ann if not testdev else self.test_ann,
-            name="val2017" if not testdev else "test2017",
+            name="val" if not testdev else "test",
             img_size=self.test_size,
             preproc=ValTransform(legacy=legacy),
         )
