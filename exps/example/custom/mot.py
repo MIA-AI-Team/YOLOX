@@ -7,8 +7,8 @@ class Exp(MyExp):
         self.depth = 1.33
         self.width = 1.25
         self.data_dir = "datasets/MOT20"
-        self.train_ann = "annotations/train.json"
-        self.val_ann = "annotation/val.json"
+        self.train_ann = "train.json"
+        self.val_ann = "val.json"
         self.input_size = (896, 1600)
         self.test_size = (896, 1600)
         #self.test_size = (736, 1920)
