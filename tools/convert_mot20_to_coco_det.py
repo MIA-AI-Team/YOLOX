@@ -57,7 +57,7 @@ def main():
     }
     
     # Process both train and test directories from MOT20
-    for data_folder in ['train', 'test']:
+    for data_folder in ['train']:
         data_path = os.path.join(mot20_path, data_folder)
         
         # Skip if folder doesn't exist
@@ -74,7 +74,7 @@ def main():
                 
             seq_path = os.path.join(data_path, seq)
             img_path = os.path.join(seq_path, 'img1')
-            det_path = os.path.join(seq_path, 'det', 'det.txt')
+            det_path = os.path.join(seq_path, 'gt', 'gt.txt')
             
             # Skip if not a directory or doesn't have detection file
             if not os.path.isdir(seq_path) or not os.path.exists(det_path):
