@@ -21,3 +21,4 @@ class Exp(MyExp):
         self.no_aug_epochs = 10
         self.basic_lr_per_img = 0.001 / 4.0
         self.warmup_epochs = 1
+        self.save_history_ckpt = False
