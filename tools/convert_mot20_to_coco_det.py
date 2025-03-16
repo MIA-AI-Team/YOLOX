@@ -57,7 +57,7 @@ def main():
     }
     
     # Process both train and test directories from MOT20
-    for data_folder in ['train']:
+    for data_folder in ['train']:  # ['train', 'test']:
         data_path = os.path.join(mot20_path, data_folder)
         
         # Skip if folder doesn't exist
@@ -177,6 +177,16 @@ def main():
                             # This can happen if we couldn't read the image earlier
                             continue
                         
+                        
+                        if not (int(det[6]) == 1):  # whether ignore.
+                            continue
+                        if int(det[7]) in [3, 4, 5, 6, 9, 10, 11]:  # Non-person
+                            continue
+                        # if int(det[7]) in [2, 7, 8, 12]:  # Ignored person
+                        #     # category_id = -1
+                        #     continue
+                        # else:
+                        #     category_id = 1  # pedestrian(non-static)
                         # Extract bounding box (x, y, width, height)
                         bbox = det[2:6].tolist()
                         
