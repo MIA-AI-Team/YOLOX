@@ -358,7 +358,7 @@ class Trainer:
 
         update_best_ckpt = ap50_95 > self.best_ap
         self.best_ap = max(self.best_ap, ap50_95)
-        synchronize()
+        # synchronize()
         if self.rank == 0:
             if self.args.logger == "tensorboard":
                 self.tblogger.add_scalar("val/COCOAP50", ap50, self.epoch + 1)
@@ -379,7 +379,7 @@ class Trainer:
                 }
                 self.mlflow_logger.on_log(self.args, self.exp, self.epoch+1, logs)
             logger.info("\n" + summary)
-        # synchronize()
+        synchronize()
 
         self.save_ckpt("last_epoch", update_best_ckpt, ap=ap50_95)
         if self.save_history_ckpt:
