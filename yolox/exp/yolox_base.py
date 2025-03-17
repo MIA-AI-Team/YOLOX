@@ -271,9 +271,10 @@ class Exp(BaseExp):
                 elif hasattr(v, "weight") and isinstance(v.weight, nn.Parameter):
                     pg1.append(v.weight)  # apply decay
 
-            optimizer = torch.optim.SGD(
-                pg0, lr=lr, momentum=self.momentum, nesterov=True
-            )
+            # optimizer = torch.optim.SGD(
+            #     pg0, lr=lr, momentum=self.momentum, nesterov=True
+            # )
+            optimizer = torch.optim.AdamW(pg0,lr)
             optimizer.add_param_group(
                 {"params": pg1, "weight_decay": self.weight_decay}
             )  # add pg1 with weight_decay
