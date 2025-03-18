@@ -81,6 +81,7 @@ class Dataset(torchDataset):
         super().__init__()
         self.__input_dim = input_dimension[:2]
         self.enable_mosaic = mosaic
+        self.cache = None
 
     @property
     def input_dim(self):
